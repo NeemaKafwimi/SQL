@@ -1,0 +1,14 @@
+SELECT SUM(vehicle_type LIKE "ambulance") AS "Ambulance", 
+       SUM(vehicle_type LIKE "car") AS "Car",
+       SUM(vehicle_type LIKE "boat") AS "Boat" 
+FROM journey AS main
+[periscope-filtered-groups]
+ WHERE [mmh_touch_combined_journey_filtering_conditions]
+AND main.flag_completed
+
+select vehicle_type, count(*)
+from journey AS main
+[periscope-filtered-groups]
+ WHERE [mmh_touch_combined_journey_filtering_conditions]
+AND main.flag_completed
+group by 1
